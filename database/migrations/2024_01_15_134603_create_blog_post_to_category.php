@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('blog_post_to_category', function (Blueprint $table) {
             $table->unsignedInteger("post_id");
-            $table->unsignedInteger("category_id");
+           
+            $table->unsignedInteger('category_id'); 
+         
             $table->primary(["post_id", "category_id"]); 
-            //$table->timestamps();
+         
         });
     }
 
@@ -24,6 +26,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        /*Schema::table('blog_post_to_category', function (Blueprint $table) {
+            $table->dropForeign('blog_post_to_category_category_id_foreign');
+            $table->dropForeign('blog_post_to_category_post_id_foreign');
+        });*/
         Schema::dropIfExists('blog_post_to_category');
     }
 };

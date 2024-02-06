@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('blog_tag', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('post_id');
+            $table->increments("id");
+            $table->unsignedInteger('post_id');
             $table->string('tag', 45);
             $table->string('tag_slug', 45)->unique();
             $table->timestamps();
